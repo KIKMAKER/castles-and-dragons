@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Castles</h1>
+  <% @castles.each do |castle| %>
+    <div class="container">
+      <%= link_to castle.name, castle_path(castle) %>
+    </div>
+  <% end %>
+</div>

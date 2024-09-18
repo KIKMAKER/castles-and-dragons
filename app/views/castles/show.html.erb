@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h1><%= @castle.name %></h1>
+  <p>This castle has all these dragons:</p>
+  <div class="dragons-container">
+    <% @dragons.each do |dragon| %>
+      <div class="container border">
+        <% if dragon.image_url %>
+          <%= image_tag dragon.image_url, class: "h-50 w-75" %>
+        <% else %>
+          <%= image_tag "https://static.vecteezy.com/system/resources/thumbnails/021/788/257/small_2x/dragon-head-detailed-amazing-artwork-vector.jpg", class: "h-50 w-75" %>
+        <% end %>
+        <p><%= dragon.name %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="container">
+    <h2>Add a dragon to this castle</h2>
+    <%= simple_form_for [@castle, @dragon] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :colour %>
+      <%= f.input :image_url %>
+      <%= f.submit "Create", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
